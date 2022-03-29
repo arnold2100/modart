@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Bienvenido a App Shop')
+@section('title', 'ModArt Boutique')
 
 @section('body-class', 'landing-page')
 

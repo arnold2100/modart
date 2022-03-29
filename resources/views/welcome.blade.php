@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Bienvenido a App Shop')
+@section('title', 'Modart Boutique')
 
 @section('body-class', 'landing-page')
 
@@ -29,11 +29,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h1 class="title">Bienvenidos Developers IT!</h1>
-                <h4>Realiza pedidos en línea y nosotros coordinamos la entrega.</h4>
+                <h1 class="title">Bienvenidos a "ModArt Boutique"</h1>
+                <h4>Moda a tu personalidad.</h4>
                 <br />
-                <a href="https://www.youtube.com/watch?v=MrAx-ie8yQ0" class="btn btn-danger btn-raised btn-lg">
-                    <i class="fa fa-play"></i> ¿Cómo funciona?
+                <a href="https://www.youtube.com/watch?v=DXCdKW2p7Lw" class="btn btn-danger btn-raised btn-lg">
+                    <i class="fa fa-play"></i> DESCUBRENOS!
                 </a>
             </div>
         </div>
@@ -46,7 +46,7 @@
         <div class="section text-center section-landing">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="title">¿Por qué comprar en App Shop?</h2>
+                    <h2 class="title">¿Por qué comprar en Modart Boutique?</h2>
                     <h5 class="description">Nuestra variedad de productos te permiten una elección perfecta, además de que manejamos los precios más accesibles del mercado. !Checa y Compara¡</h5>
                 </div>
             </div>

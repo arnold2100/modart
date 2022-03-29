@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\catalogocontroller;
 use App\Http\Controllers\admin\EnvioController;
 use App\Http\Controllers\admin\ImageController;
 use App\Http\Controllers\admin\PrendaController as AdminPrendaController;
@@ -51,6 +52,9 @@ Route::post('/pedidos/{id}/delete', [PedidoController::class, 'destroy']); //eli
 
 
 Route::middleware(['auth','admin'])->namespace('Admin')->prefix('admin')->group(function () {
+
+    Route::get('/catalogo', [catalogocontroller::class, 'index']); //listar 
+
 	Route::get('/products', [AdminPrendaController::class, 'index']); //listar 
 	Route::get('/products/create', [AdminPrendaController::class, 'create']); //formulario para crear
 	Route::post('/products', [AdminPrendaController::class, 'store']); //crear

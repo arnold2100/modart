@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>@yield('title', 'Developers TI')</title>
+    <title>@yield('title', 'ModART Boutique')</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -35,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url('/') }}">Developers TI</a>
+                <a class="navbar-brand" href="{{ url('/') }}">TIENDA DE ROPA</a>
             </div>
 
             <div class="collapse navbar-collapse" id="navigation-example">
@@ -52,11 +52,14 @@
 
                                 <ul class="dropdown-menu">
                                 <li>
-                                    <a href="{{ url('/') }}">Dashboard</a>
+                                    <a href="{{ url('/') }}">Inicio</a>
                                 </li>
                                     @if (auth()->user()->admin)
                                         <li>
                                             <a href="{{ url('/admin/products') }}">Gestionar productos</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('/admin/catalogo') }}">Catalogo</a>
                                         </li>
                                          <li>
                                             <a href="{{ url('/admin/categories') }}">Gestionar categorias</a>
