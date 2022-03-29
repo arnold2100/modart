@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 
+
     <!-- CSS Files -->
     <link href="{{ asset('clients/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('clients/css/material-kit.css') }}" rel="stylesheet"/>
@@ -51,7 +52,7 @@
 
                                 <ul class="dropdown-menu">
                                 <li>
-                                    <a href="{{ url('/home') }}">Dashboard</a>
+                                    <a href="{{ url('/') }}">Dashboard</a>
                                 </li>
                                     @if (auth()->user()->admin)
                                         <li>
@@ -59,6 +60,12 @@
                                         </li>
                                          <li>
                                             <a href="{{ url('/admin/categories') }}">Gestionar categorias</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('/admin/envios') }}">Gestionar envios</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Pedidos</a>
                                         </li>
                                     @endif
                                     <li>
@@ -115,13 +122,10 @@
     <script src="{{ asset('clients/js/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('clients/js/bootstrap.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('clients/js/material.min.js') }}"></script>
-
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
     <script src="{{ asset('clients/js/nouislider.min.js') }}" type="text/javascript"></script>
-
     <!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
     <script src="{{ asset('clients/js/bootstrap-datepicker.js') }}" type="text/javascript"></script>
-
     <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
     <script src="{{ asset('clients/js/material-kit.js') }}" type="text/javascript"></script>
 

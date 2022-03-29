@@ -40,9 +40,12 @@
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>
-                                <th class="col-md-2 text-center">Nombre</th>
-                                <th class='col-md-5 text-center'>Descripción</th>
-                                <th class="text-center">Categoria</th>
+                                <th class="col-md-1 text-center">Nombre</th>
+                                <th class='col-md-3 text-center'>Descripción</th>
+                                <th class="text-center">Marca</th>
+                                <th class="text-center">Talla</th>
+                                <th class="text-center">Color</th>
+                                <th class="text-center">Stock</th>
                                 <th class="text-right">Precio</th>
                                 <th class="text-right">Acciones</th>
                             </tr>
@@ -51,15 +54,18 @@
                         @foreach ($prendas as $product)
                         <tr>
                             <td class="text-center">{{ $product->id }}</td>
-                            <td>{{ $product->name }}</td>
+                            <td>{{ $product->nombre }}</td>
                             <td>{{ $product->description }}</td>
-                            <td>{{ $product->category_name  }}</td>
-                            <td class="text-right">&euro; {{ $product->price }}</td>
+                            <td>{{ $product->marcas->nombre  }}</td>
+                            <td>{{ $product->tallas->talla }}</td>
+                            <td>{{ $product->colors->color  }}</td>
+                            <td>{{ $product->stock  }}</td>
+                            <td class="text-right">&euro; {{ $product->precioUnit }}</td>
                             <td class="td-actions text-right">
                               <form method="post" action="{{ url('/admin/products/'.$product->id.'/delete') }}">
                               {{ csrf_field() }}
 
-                                <a href="{{ url('/products/'.$product->id) }}" rel="tooltip" title="Ver Producto" class="btn btn-info btn-simple btn-xs" target="_blank">
+                                <a href="{{ url('/products/'.$product->id) }}" rel="tooltip" title="Ver Producto" class="btn btn-info btn-simple btn-xs">
                                     <i class="fa fa-info"></i>
                                 </a>
 
@@ -67,9 +73,9 @@
                                     <i class="fa fa-edit"></i>
                                 </a>                                   
                                 
-                                 <!--a href="{{ url('/admin/products/'.$product->id.'/images') }}" rel="tooltip" title="Imágenes del producto" class="btn btn-warning btn-simple btn-xs">
+                                 <a href="{{ url('/admin/products/'.$product->id.'/images') }}" rel="tooltip" title="Imágenes del producto" class="btn btn-warning btn-simple btn-xs">
                                     <i class="fa fa-image"></i>
-                                </a-->
+                                </a>
 
                                     <button type="submit" rel="tooltip" title="Eliminar" class="btn btn-danger btn-simple btn-xs">
                                         <i class="fa fa-times"></i>

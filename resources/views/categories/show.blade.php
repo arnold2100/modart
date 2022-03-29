@@ -55,7 +55,7 @@
                                  <div class="team-player">
                                 <img src="{{ $product->featured_image_url }}" alt="Thumbnail Image" class="img-rounded img-responsive">
                                         <h4 class="title">
-                                       <a href="{{ url('/products/'. $product->id) }}"> {{ $product->prenda }} </a> 
+                                       <a href="{{ url('/products/'. $product->id) }}"> {{ $product->nombre }} </a> 
                                        
                                         </h4>
                                         <p class="description">{{ $product->description }}</p>

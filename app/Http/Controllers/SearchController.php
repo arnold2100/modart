@@ -16,15 +16,12 @@ class SearchController extends Controller
     			$id = $products->first()->id;
     			return redirect("/products/$id");
     		}
-
-
     		return view('search.show')->with(compact('products', 'query'));
-
     }
 
     public function data()
     {
-    	$products = Prenda::pluck('name');
+    	$products = Prenda::pluck('nombre');
     	return $products;
     }
 }

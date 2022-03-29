@@ -13,7 +13,6 @@
          .row {
             margin-top: 20px;
          }
-    /*not(:first-child) */
 
     </style>
 @endsection
@@ -59,7 +58,7 @@
                                  <div class="team-player">
                                 <img src="{{ $product->featured_image_url }}" alt="Thumbnail Image" class="img-rounded ">
                                         <h4 class="title">
-                                       <a href="{{ url('/products/'. $product->id) }}"> {{ $product->name }} </a> 
+                                       <a href="{{ url('/products/'. $product->id) }}"> {{ $product->nombre }} </a> 
                                        
                                         </h4>
                                         <p class="description">{{ $product->description }}</p>
@@ -71,16 +70,9 @@
                 <div class="text-center">
                     {{ $products->links() }}
                 </div>
-
-
-               
-     </div>
-                
+    
             </div>
-
-
-       
-
+        </div>
     </div>
 </div>
 </div>

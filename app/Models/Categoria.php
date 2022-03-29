@@ -23,14 +23,14 @@ class Categoria extends Model
     public function getFeaturedImageUrlAttribute()
     {
       if($this->image){
-          return '/images/categories/' . $this->image;
+          return '/clients/images/categories/' . $this->image;
       }else{
 
         $firstProduct = $this->prendas()->first();    
         if($firstProduct)   
             return $firstProduct->featured_image_url;
           else
-            return '/images/default.png';
+            return '/clients/images/default.png';
       }
     }
 }

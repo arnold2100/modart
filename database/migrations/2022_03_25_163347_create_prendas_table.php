@@ -23,7 +23,6 @@ return new class extends Migration
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
             $table->unsignedBigInteger('color_id');
             $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
-            $table->string('imagen')->nullable();
             $table->string('nombre');
             $table->integer('stock');
             $table->float('precioUnit');

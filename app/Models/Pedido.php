@@ -21,4 +21,8 @@ class Pedido extends Model
     	return $total;
 
     }
+    
+    public function cliente(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

@@ -1,9 +1,6 @@
 @extends('layouts.app')
-
 @section('title', 'App Shop | Dashboard')
-
 @section('body-class', 'profile-page')
-
 
 @section('content')    
 <div class="header header-filter"></div>
@@ -17,16 +14,16 @@
                     <img src="{{ $product->featured_image_url }}" alt="Circle Image" class="img-circle img-responsive img-raised">
                 </div>
                 <div class="name">
-                    <h3 class="title">{{ $product->name }}</h3>
-                    <h6>{{ $product->category->name }}</h6>
+                    <h3 class="title">{{ $product->nombre }}</h3>
+                    <h6>{{ $product->category->nombre }}</h6>
                 </div>
 
                  @if (session('msg'))
                     <div class="row">
                         <div class="col-sm-8 text-center">
                             <div class="alert alert-success">
-                            {{ session('msg') }}
-                        </div>
+                                {{ session('msg') }}
+                            </div>
                         </div>
                         <div class="col-sm-4 text-right">
                             <a href="{{ url('/#cats') }}" class="btn btn-default btn-sm">
@@ -35,7 +32,14 @@
                                     </a>
                         </div>
                     </div>
-                        
+                @elseif (session('msgError'))
+                    <div class="row">
+                        <div class="col-sm-8 text-center">
+                            <div class="alert alert-danger">
+                                {{ session('msgError') }}
+                            </div>
+                        </div>
+                    </div>
                 @endif
                 
             </div>
@@ -104,9 +108,9 @@
                   </div>
                   <form method="post" action="{{ url('/cart') }}">
                     {{ csrf_field() }}
-                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <input type="hidden" name="prenda_id" value="{{ $product->id }}">
                       <div class="modal-body">
-                        <input type="number" class="form-control" name="quantity" value="1">
+                        <input type="number" class="form-control" name="cantidad" value="1">
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Cancelar</button>

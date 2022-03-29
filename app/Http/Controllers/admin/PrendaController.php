@@ -8,6 +8,7 @@ use App\Models\Color;
 use App\Models\Marca;
 use App\Models\PedidoDetalle;
 use App\Models\Prenda;
+use App\Models\PrendaImage;
 use App\Models\Talla;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -15,24 +16,22 @@ use Illuminate\Support\Facades\Session;
 class PrendaController extends Controller
 {
     private $validar = [
-        'prenda' => 'required',
-        'imagen' => 'required|image|mimes:png,jpg,jpeg,gif',
+        'nombre' => 'required',
         'stock' => 'required | numeric | min:5',
         'precioUnit' => 'required',
         'color_id' => 'required',
         'talla_id' => 'required',
         'marca_id' => 'required',
-        'tipoPrenda_id' => 'required',
+        'categoria_id' => 'required',
     ];
     private $validarEdit = [
-        'prenda' => 'required',
-        'imagen' => 'image|mimes:png,jpg,jpeg,gif',
+        'nombre' => 'required',
         'stock' => 'required | numeric | min:5',
         'precioUnit' => 'required',
         'color_id' => 'nullable',
         'talla_id' => 'nullable',
         'marca_id' => 'nullable',
-        'tipoPrenda_id' => 'nullable',
+        'categoria_id' => 'nullable',
     ];
 
     public function index(Request $res){
@@ -52,28 +51,22 @@ class PrendaController extends Controller
 
         $request->validate($this->validar);
 
-        $prenda = new prenda();
-        $prenda->tipoPrenda_id = $request->tipoPrenda_id;
+        $prenda = new Prenda();
+        $prenda->categoria_id = $request->categoria_id;
         $prenda->marca_id = $request->marca_id;
         $prenda->color_id = $request->color_id;
         $prenda->talla_id = $request->talla_id;
-        $prenda->prenda = $request->prenda;
-        if($request->hasFile('imagen')){
-            $file = $request->file('imagen');
-            $destinationPath = 'imagenes/prendas/';
-            $filename = time() . '-' . $file->getClientOriginalName();
-            $uploadSuccess = $request->file('imagen')->move($destinationPath, $filename);
-            $prenda->imagen = $destinationPath . $filename;
-        }
+        $prenda->nombre = $request->nombre;
         $prenda->stock = $request->stock;
         $prenda->precioUnit = $request->precioUnit;
+        $prenda->description = $request->description;
         $prenda->save();
-        return redirect()->route('admin/products');
+        return redirect('admin/products');
     }
 
     public function edit($id){
         
-        $categories = Categoria::orderBy('name')->get();
+        $categories = Categoria::orderBy('nombre')->get();
         $marcas = marca::all();
         $colors = Color::all();
         $tallas = talla::all();
@@ -83,27 +76,24 @@ class PrendaController extends Controller
 
     public function update(Request $request, $id)
     {
-        $post = prenda::find($id);
         $request->validate($this->validarEdit);
-        if($request->prenda){
-            $post->prenda = $request->prenda;
-        }
-        if($request->hasFile('imagen')){
-            $file = $request->file('imagen');
-            $destinationPath = 'imagenes/prendas/';
-            $filename = time() . '-' . $file->getClientOriginalName();
-            $uploadSuccess = $request->file('imagen')->move($destinationPath, $filename);
-            $post->imagen = $destinationPath . $filename;
-        }
-        $post->save();
+        $prenda = prenda::find($id);
+        $prenda->categoria_id = $request->categoria_id;
+        $prenda->marca_id = $request->marca_id;
+        $prenda->color_id = $request->color_id;
+        $prenda->talla_id = $request->talla_id;
+        $prenda->nombre = $request->nombre;
+        $prenda->stock = $request->stock;
+        $prenda->precioUnit = $request->precioUnit;
+        $prenda->description = $request->description;
+        $prenda->save();
         return redirect()->route('admin/products');
     }
 
     public function destroy($id)  
    {
-      PedidoDetalle::where('product_id', $id)->delete();
-      //ProductImage::where('product_id', $id)->delete();
-
+      PedidoDetalle::where('prenda_id', $id)->delete();
+      PrendaImage::where('prenda_id', $id)->delete();
    		$product = Prenda::find($id);
    		$product->delete();
    		

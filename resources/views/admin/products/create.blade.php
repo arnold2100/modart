@@ -73,7 +73,7 @@
                         </div>  
                         <div class="col-sm-6">
                             <select class="form-control" name="categoria_id">
-                                <option value="0">General</option>
+                                <option value="0">Selecionar Categoria</option>
                                 @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->nombre }}</option>
                                 @endforeach
@@ -81,15 +81,28 @@
                         </div>
                  </div>
 
-				<div class="grid grid-cols-1 mt-5 mx-7">
-					<img id="imagenSeleccionada" style="max-height: 200px;">
-				</div>
+                 <div class="row">
+                        <div class="col-sm-6">
+                            <select class="form-control" name="color_id">
+                                <option value="0">Selecionar Color</option>
+                                @foreach ($colors as $col)
+                                <option value="{{ $col->id }}">{{ $col->color }}</option>
+                                @endforeach
+                            </select>                                                                                
+                        </div>
+                        <div class="col-sm-6">
+                            <select class="form-control" name="talla_id">
+                                <option value="0">Selecionar Talla</option>
+                                @foreach ($tallas as $tall)
+                                <option value="{{ $tall->id }}">{{ $tall->talla }}</option>
+                                @endforeach
+                            </select>                                                                                
+                        </div>
+                 </div>
 
-                 <div class="input-group">
-                     <span class="input-group-addon">
-                            <i class="material-icons">reorder</i></span>   
-                    <textarea class="form-control" placeholder="Descripción larga del producto" rows="5" name="long_description">{{ old('long_description') }}</textarea>
-                </div>
+				<!--div class="grid grid-cols-1 mt-5 mx-7">
+					<img id="imagenSeleccionada" style="max-height: 200px;">
+				</div-->
                 
                 <button class="btn btn-primary">Registrar producto</button>
                 <a href="{{ url('/admin/products') }}" class="btn btn-default">Cancelar</a>
